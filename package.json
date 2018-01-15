@@ -2,10 +2,13 @@
   "name": "react-agnostic-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+    "scripts": {
+      "start": "react-native-scripts start",
+      "eject": "react-native-scripts eject",
+      "android": "react-native-scripts android",
+      "ios": "react-native-scripts ios",
+    },
   "author": "",
   "license": "ISC",
   "devDependencies": {
