@@ -13,5 +13,10 @@
   "license": "ISC",
   "devDependencies": {
     "react-native-scripts": "^1.8.1"
+  },
+  "dependencies": {
+    "expo": "^24.0.2",
+    "react": "^16.0.0",
+    "react-native": "^0.51.0"
   }
 }
