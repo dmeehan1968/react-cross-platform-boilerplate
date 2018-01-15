@@ -1,5 +1,7 @@
 {
   "name": "react-agnostic-boilerplate",
+  "author": "",
+  "license": "ISC",
   "version": "1.0.0",
   "description": "",
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
@@ -9,8 +11,6 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "react-native-scripts": "^1.8.1"
   },
