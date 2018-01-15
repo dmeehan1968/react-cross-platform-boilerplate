@@ -22,5 +22,8 @@
     "react-sketchapp": "^1.0.0",
     "react-test-renderer": "^16.0.0"
   },
+  "skpm": {
+    "main": "react-agnostic-boilerplate.sketchplugin",
+    "manifest": "src/sketchapp/manifest.json"
   }
 }
