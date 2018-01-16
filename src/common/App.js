@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class App extends React.Component {
 
@@ -28,4 +29,10 @@ export default class App extends React.Component {
       </View>
     )
   }
+}
+
+App.propTypes = {
+  Text: PropTypes.func.isRequired,
+  View: PropTypes.func.isRequired,
+  StyleSheet: PropTypes.object.isRequired,
 }
