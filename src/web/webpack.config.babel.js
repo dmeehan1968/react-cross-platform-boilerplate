@@ -27,22 +27,20 @@ export default {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
+            // https://github.com/necolas/react-native-web/blob/master/website/guides/getting-started.md
+            plugins: [ 'react-native-web' ],
+            presets: [ 'react-native' ],
+            cacheDirectory: true,
+            // Don't use root babel config
             babelrc: false,
-            presets: [ 'env', 'react' ],
+            // Enable source maps
             sourceMaps: true
           }
         }
       }
     ]
-  },
-
-  resolve: {
-       alias: {
-           "react-native": "react-native-web"
-       }
-   }
+  }
 }
