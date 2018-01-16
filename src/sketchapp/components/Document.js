@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, Artboard } from 'react-sketchapp'
+import { Text, View, Artboard, StyleSheet } from 'react-sketchapp'
 
 const devices = [
   { name: 'iPhone SE', width: 320, height: 568 },
@@ -16,33 +16,40 @@ const documentWidth = devices.reduce((sum, device) => sum + (device.width + vars
 
 export default Document = ({ children }) => (
 
-  <Artboard style={
-    {
-      width: documentWidth,
-      padding: vars.documentPadding,
-      flexDirection: 'row',
-      justifyContent: 'space-between'
-    }
-  }>
+  <Artboard style={styles.artboard}>
     {devices.map(device => (
-      <View key={device.name} >
-        <Text style={
-          {
-            marginTop: vars.margin,
-            marginBottom: vars.margin*2,
-          }
-        }>{device.name} ({device.width}x{device.height})</Text>
-        <View style={
+      <View name={device.name} key={device.name} >
+        <Text name="title" style={styles.deviceTitle}>
+          {device.name} ({device.width}x{device.height})
+        </Text>
+        <View name="content" style={[
+          styles.component,
           {
             width: device.width,
             height: device.height,
-            borderWidth: 1,
-            borderColor: 'red',
           }
-        }>
+        ]}>
           {children}
         </View>
       </View>
     ))}
   </Artboard>
 )
+
+const styles = StyleSheet.create({
+  artboard: {
+    width: documentWidth,
+    padding: vars.documentPadding,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  deviceTitle: {
+    marginTop: vars.margin,
+    marginBottom: vars.margin*2,
+  },
+  component: {
+    borderWidth: 1,
+    borderColor: 'red',
+  }
+
+})

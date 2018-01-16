@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class App extends React.Component {
+export default class HelloWorld extends React.Component {
 
   constructor(props) {
     super(props)
@@ -24,14 +24,14 @@ export default class App extends React.Component {
     const styles = this.styles
 
     return (
-      <View name="container" style={styles.container}>
-        <Text style={styles.text}>Hello World</Text>
+      <View name="HelloWorld" style={styles.container}>
+        <Text name="message" style={styles.text}>Hello World</Text>
       </View>
     )
   }
 }
 
-App.propTypes = {
+HelloWorld.propTypes = {
   Text: PropTypes.func.isRequired,
   View: PropTypes.func.isRequired,
   StyleSheet: PropTypes.object.isRequired,

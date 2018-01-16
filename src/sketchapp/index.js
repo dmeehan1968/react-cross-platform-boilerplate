@@ -1,11 +1,11 @@
 import React from 'react'
 import { render, Text, View, StyleSheet } from 'react-sketchapp'
 import Document from './components/Document'
-import App from '../common/App'
+import HelloWorld from '../common/HelloWorld'
 
 const RSApp = () => {
   const props = { Text, View, StyleSheet }
-  return <App { ...props } />
+  return <HelloWorld { ...props } />
 }
 
 export default () => {
