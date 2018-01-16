@@ -8,12 +8,12 @@ export default class HelloWorld extends React.Component {
     const { StyleSheet } = this.props
 
     this.styles = StyleSheet.create({
-      container: {
+      helloWorld: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
       },
-      text: {
+      message: {
         fontSize: 30
       }
     })
@@ -24,8 +24,8 @@ export default class HelloWorld extends React.Component {
     const styles = this.styles
 
     return (
-      <View name="HelloWorld" style={styles.container}>
-        <Text name="message" style={styles.text}>Hello World</Text>
+      <View name="HelloWorld" style={styles.helloWorld}>
+        <Text name="message" style={styles.message}>Hello World</Text>
       </View>
     )
   }
