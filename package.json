@@ -14,17 +14,30 @@
     "watch": "skpm-build --watch",
     "render": "skpm-build --watch --run",
     "render:once": "skpm-build --run",
-    "postinstall": "npm run build && skpm-link"
+    "postinstall": "npm run build && skpm-link",
+    "web:build": "webpack --config ./src/web/webpack.config.babel.js",
+    "web:start": "webpack-dev-server --config ./src/web/webpack.config.babel.js --open"
   },
   "devDependencies": {
     "@skpm/builder": "^0.3.0",
-    "react-native-scripts": "^1.8.1"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-react-native-web": "^0.3.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "react-native-scripts": "^1.8.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
     "expo": "^24.0.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
+    "react-dom": "^16.2.0",
     "react-native": "^0.51.0",
+    "react-native-web": "^0.3.0",
     "react-sketchapp": "file:../react-sketchapp",
     "react-test-renderer": "^16.0.0"
   },
