@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, View, Artboard } from 'react-sketchapp'
-import App from './App'
 
 const devices = [
   { name: 'iPhone SE', width: 320, height: 568 },
@@ -15,7 +14,7 @@ const vars = {
 
 const documentWidth = devices.reduce((sum, device) => sum + (device.width + vars.margin), 0) + (vars.documentPadding * 2)
 
-export default Document = () => (
+export default Document = ({ children }) => (
 
   <Artboard style={
     {
@@ -41,7 +40,7 @@ export default Document = () => (
             borderColor: 'red',
           }
         }>
-          <App />
+          {children}
         </View>
       </View>
     ))}
