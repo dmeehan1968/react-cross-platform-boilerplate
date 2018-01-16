@@ -10,6 +10,8 @@ export default {
     path: path.resolve(__dirname, '../../dist')
   },
 
+  devtool: 'eval-cheap-module-source-map',
+
   devServer: {
     contentBase: path.resolve(__dirname, '../../dist')
   },
