@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+export const ContextTypes = {
+  View: PropTypes.func.isRequired,
+  Text: PropTypes.func.isRequired,
+  StyleSheet: PropTypes.object.isRequired,
+}
+
 export default class HelloWorld extends React.Component {
 
-  static contextTypes = {
-    View: PropTypes.func.isRequired,
-    Text: PropTypes.func.isRequired,
-    StyleSheet: PropTypes.object.isRequired,
-  }
+  static contextTypes = ContextTypes
 
   get styles() {
     const { StyleSheet } = this.context
