@@ -21,8 +21,7 @@ class Device extends React.Component {
         fontSize: 20
       },
       content: {
-        borderWidth: 1,
-        borderColor: 'red',
+        backgroundColor: 'white'
       }
     })
   }
@@ -98,6 +97,9 @@ export default class Document extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  artboard: {
+    backgroundColor: '#ddd'
+  },
   container: {
     padding: vars.documentPadding,
   },
