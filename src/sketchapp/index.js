@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { render, Text, View, StyleSheet } from 'react-sketchapp'
+
 import Document from './components/Document'
 import HelloWorld, { ContextTypes as HelloWorldContextTypes } from '../common/components/HelloWorld'
-import PropTypes from 'prop-types'
 import contextProvider from '../common/utils/contextProvider'
 
 const RSApp = contextProvider({ Text, View, StyleSheet }, HelloWorldContextTypes)
