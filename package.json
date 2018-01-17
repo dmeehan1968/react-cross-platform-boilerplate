@@ -1,5 +1,5 @@
 {
-  "name": "react-agnostic-boilerplate",
+  "name": "react-cross-platform-boilerplate",
   "author": "",
   "license": "ISC",
   "version": "1.0.0",
@@ -43,7 +43,7 @@
     "react-test-renderer": "^16.0.0"
   },
   "skpm": {
-    "main": "react-agnostic-boilerplate.sketchplugin",
+    "main": "react-cross-platform-boilerplate.sketchplugin",
     "manifest": "src/sketchapp/manifest.json"
   }
 }

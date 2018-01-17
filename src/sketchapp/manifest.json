@@ -3,7 +3,7 @@
 	"bundleVersion": 1,
 	"commands": [
 		{
-			"name": "react-agnostic-boilerplate",
+			"name": "react-cross-platform-boilerplate",
 			"identifier": "main",
 			"script": "./index.js"
 		}
