@@ -1,25 +1,20 @@
 import React from 'react'
 import { Text, View, Artboard, StyleSheet } from 'react-sketchapp'
-
-const devices = [
-  { name: 'iPhone SE', width: 320, height: 568 },
-  { name: 'iPhone 7', width: 375, height: 667 },
-  { name: 'iPhone 7+', width: 414, height: 736 },
-  { name: 'Small Desktop', width: 800, height: 600 }
-]
+import PropTypes from 'prop-types'
 
 const vars = {
   documentPadding: 50,
   margin: 10
 }
 
-const documentWidth = devices.reduce((sum, device) => sum + (device.width + vars.margin), 0) + (vars.documentPadding * 2)
-
 class Device extends React.Component {
 
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.styles = StyleSheet.create({
+      container: {
+        marginRight: 20
+      },
       title: {
         marginTop: vars.margin,
         marginBottom: vars.margin*2,
@@ -36,7 +31,7 @@ class Device extends React.Component {
     const title = `${this.props.name} (${this.props.width}x${this.props.height})`
 
     return (
-      <View name={this.props.name} >
+      <View name={this.props.name} style={this.styles.container} >
         <Text name="title" style={this.styles.title}>
           {title}
         </Text>
@@ -55,25 +50,62 @@ class Device extends React.Component {
   }
 }
 
-export default Document = ({ children }) => (
+export default class Document extends React.Component {
 
-  <Artboard style={styles.artboard}>
-    {devices.map(device => (
+  static propTypes = {
+    devices: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        width: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
+      }).isRequired,
+    ).isRequired,
+    components: PropTypes.arrayOf(
+      PropTypes.func.isRequired,
+    ).isRequired,
+  }
+
+  renderComponent(Component, index) {
+    return (
+      <View style={styles.container} key={index}>
+        <Text style={styles.title}>{Component.name}</Text>
+        <View name="Component" style={styles.component}>
+          {this.props.devices.map(device => this.renderDevice(device, Component))}
+        </View>
+      </View>
+    )
+  }
+
+  renderDevice(device, Component) {
+    return (
       <Device
         key={device.name}
         {...device}
       >
-        {children}
+        <Component />
       </Device>
-    ))}
-  </Artboard>
-)
+    )
+  }
+
+  render() {
+
+    return (
+      <Artboard style={styles.artboard}>
+        {this.props.components.map(::this.renderComponent)}
+      </Artboard>
+    )
+  }
+}
 
 const styles = StyleSheet.create({
-  artboard: {
-    width: documentWidth,
+  container: {
     padding: vars.documentPadding,
+  },
+  component: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+  },
+  title: {
+    fontSize: 50,
+    marginBottom: vars.margin*2
   }
 })

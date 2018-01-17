@@ -17,12 +17,20 @@ const RSApp = ContextInjector(
 
 export default () => {
 
+  const devices = [
+    { name: 'iPhone SE', width: 320, height: 568 },
+    { name: 'iPhone 7', width: 375, height: 667 },
+    { name: 'iPhone 7+', width: 414, height: 736 },
+    { name: 'Small Desktop', width: 800, height: 600 }
+  ]
+
   render(
-    <Document>
-      <RSApp>
-        <HelloWorld />
-      </RSApp>
-    </Document>,
-      context.document.currentPage());
+    <RSApp>
+      <Document
+        devices={devices}
+        components={[HelloWorld]}
+      />
+    </RSApp>,
+    context.document.currentPage());
 
 }

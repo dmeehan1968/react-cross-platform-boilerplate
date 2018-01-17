@@ -14,7 +14,7 @@
     "sketch:watch": "skpm-build --watch",
     "sketch:render": "skpm-build --watch --run",
     "sketch:render:once": "skpm-build --run",
-    "postinstall": "npm run sketch:build && skpm-link",
+    "postinstall": "skpm-link",
     "web:build": "webpack --config ./src/web/webpack.config.babel.js",
     "web:start": "webpack-dev-server --config ./src/web/webpack.config.babel.js --open"
   },
@@ -24,6 +24,9 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-react-native-web": "^0.3.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
