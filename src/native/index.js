@@ -1,8 +1,8 @@
 import React from 'react'
 import { AppRegistry, Text, View, StyleSheet } from 'react-native'
-import HelloWorld from '../common/HelloWorld'
+import HelloWorld from '../common/components/HelloWorld'
 import PropTypes from 'prop-types'
-import ContextInjector from '../common/ContextInjector'
+import ContextInjector from '../common/utils/ContextInjector'
 
 const RNApp = ContextInjector(
   { Text, View, StyleSheet },

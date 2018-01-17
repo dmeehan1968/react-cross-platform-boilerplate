@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, Text, View, StyleSheet } from 'react-sketchapp'
 import Document from './components/Document'
-import HelloWorld from '../common/HelloWorld'
+import HelloWorld from '../common/components/HelloWorld'
 import PropTypes from 'prop-types'
-import ContextInjector from '../common/ContextInjector'
+import ContextInjector from '../common/utils/ContextInjector'
 
 const RSApp = ContextInjector(
   {
