@@ -15,24 +15,56 @@ const vars = {
 
 const documentWidth = devices.reduce((sum, device) => sum + (device.width + vars.margin), 0) + (vars.documentPadding * 2)
 
+class Device extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.styles = StyleSheet.create({
+      title: {
+        marginTop: vars.margin,
+        marginBottom: vars.margin*2,
+        fontSize: 20
+      },
+      content: {
+        borderWidth: 1,
+        borderColor: 'red',
+      }
+    })
+  }
+
+  render() {
+    const title = `${this.props.name} (${this.props.width}x${this.props.height})`
+
+    return (
+      <View name={this.props.name} >
+        <Text name="title" style={this.styles.title}>
+          {title}
+        </Text>
+        <View name="content" style={[
+          this.styles.content,
+          {
+            width: this.props.width,
+            height: this.props.height,
+          }
+        ]}>
+          {this.props.children}
+        </View>
+      </View>
+
+    )
+  }
+}
+
 export default Document = ({ children }) => (
 
   <Artboard style={styles.artboard}>
     {devices.map(device => (
-      <View name={device.name} key={device.name} >
-        <Text name="title" style={styles.deviceTitle}>
-          {device.name} ({device.width}x{device.height})
-        </Text>
-        <View name="content" style={[
-          styles.component,
-          {
-            width: device.width,
-            height: device.height,
-          }
-        ]}>
-          {children}
-        </View>
-      </View>
+      <Device
+        key={device.name}
+        {...device}
+      >
+        {children}
+      </Device>
     ))}
   </Artboard>
 )
@@ -43,14 +75,5 @@ const styles = StyleSheet.create({
     padding: vars.documentPadding,
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  deviceTitle: {
-    marginTop: vars.margin,
-    marginBottom: vars.margin*2,
-  },
-  component: {
-    borderWidth: 1,
-    borderColor: 'red',
   }
-
 })
