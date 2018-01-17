@@ -3,24 +3,34 @@ import PropTypes from 'prop-types'
 
 export default class HelloWorld extends React.Component {
 
-  constructor(props) {
-    super(props)
-    const { StyleSheet } = this.props
+  static contextTypes = {
+    View: PropTypes.func.isRequired,
+    Text: PropTypes.func.isRequired,
+    StyleSheet: PropTypes.object.isRequired,
+  }
 
-    this.styles = StyleSheet.create({
-      helloWorld: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-      },
-      message: {
-        fontSize: 30
-      }
-    })
+  get styles() {
+
+    if (!this._styles) {
+      const { StyleSheet } = this.context
+
+      this._styles = StyleSheet.create({
+        helloWorld: {
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        },
+        message: {
+          fontSize: 30
+        }
+      })
+    }
+
+    return this._styles
   }
 
   render() {
-    const { Text, View } = this.props
+    const { Text, View } = this.context
     const styles = this.styles
 
     return (
@@ -29,10 +39,4 @@ export default class HelloWorld extends React.Component {
       </View>
     )
   }
-}
-
-HelloWorld.propTypes = {
-  Text: PropTypes.func.isRequired,
-  View: PropTypes.func.isRequired,
-  StyleSheet: PropTypes.object.isRequired,
 }
