@@ -9,9 +9,9 @@ const vars = {
 
 class Device extends React.Component {
 
-  constructor(props, context) {
-    super(props, context)
-    this.styles = StyleSheet.create({
+  get styles() {
+
+    return this._styles || (this._styles = StyleSheet.create({
       container: {
         marginRight: 20
       },
@@ -23,7 +23,8 @@ class Device extends React.Component {
       content: {
         backgroundColor: 'white'
       }
-    })
+    }))
+
   }
 
   render() {
@@ -64,11 +65,30 @@ export default class Document extends React.Component {
     ).isRequired,
   }
 
+  get styles() {
+
+    return this._styles || (this._styles = StyleSheet.create({
+      artboard: {
+        backgroundColor: '#ddd'
+      },
+      container: {
+        padding: vars.documentPadding,
+      },
+      component: {
+        flexDirection: 'row',
+      },
+      title: {
+        fontSize: 50,
+        marginBottom: vars.margin*2
+      }
+    }))
+  }
+
   renderComponent(Component, index) {
     return (
-      <View style={styles.container} key={index}>
-        <Text style={styles.title}>{Component.name}</Text>
-        <View name="Component" style={styles.component}>
+      <View style={this.styles.container} key={index}>
+        <Text style={this.styles.title}>{Component.name}</Text>
+        <View name="Component" style={this.styles.component}>
           {this.props.devices.map(device => this.renderDevice(device, Component))}
         </View>
       </View>
@@ -89,25 +109,9 @@ export default class Document extends React.Component {
   render() {
 
     return (
-      <Artboard style={styles.artboard}>
+      <Artboard style={this.styles.artboard}>
         {this.props.components.map(::this.renderComponent)}
       </Artboard>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  artboard: {
-    backgroundColor: '#ddd'
-  },
-  container: {
-    padding: vars.documentPadding,
-  },
-  component: {
-    flexDirection: 'row',
-  },
-  title: {
-    fontSize: 50,
-    marginBottom: vars.margin*2
-  }
-})

@@ -10,11 +10,9 @@ export default class HelloWorld extends React.Component {
   }
 
   get styles() {
+    const { StyleSheet } = this.context
 
-    if (!this._styles) {
-      const { StyleSheet } = this.context
-
-      this._styles = StyleSheet.create({
+    return this._styles || (this._styles = StyleSheet.create({
         helloWorld: {
           flex: 1,
           justifyContent: 'center',
@@ -23,10 +21,8 @@ export default class HelloWorld extends React.Component {
         message: {
           fontSize: 30
         }
-      })
-    }
-
-    return this._styles
+      }
+    ))
   }
 
   render() {
