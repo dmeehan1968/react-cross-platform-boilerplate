@@ -36,6 +36,7 @@
     "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
+    "auth0-js": "^8.12.2",
     "expo": "^24.0.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
