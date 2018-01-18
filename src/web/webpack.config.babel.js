@@ -42,5 +42,9 @@ export default {
         }
       }
     ]
+  },
+
+  resolve: {
+    extensions: [ '.web.js', '.js' ]
   }
 }
